@@ -41,7 +41,7 @@ ok，现在有了SendKey。修改本项目的配置文件config.php，将sendKey
 *在vps上安装git和lamp环境之类的我就不多赘述了，相信玩域名和vps的人都会，不会的可以去找一键脚本。以下操作使用的是Centos7，其它操作系统命令大同小异。*
 #### clone本仓库源码
 ```bash
-$ clone https://github.com/luolongfei/bwg.git ./
+$ git clone https://github.com/luolongfei/bwg.git ./
 ```
 #### 安装crontabs以及cronie
 ```bash
