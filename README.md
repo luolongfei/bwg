@@ -3,6 +3,15 @@
 前两天搬瓦工偷偷补货GIA CN2乞丐版（限量款），三网直连，简直是为我量身定做的，
 但我没有第一时间得到消息，等我到购买页面的时候发现已经卖完了卖完了……所以就有了这个项目。
 
+### 效果
+*每当搬瓦工补货，都能收到微信消息。消息内容包括VPS的基本信息和最新的优惠码。*
+
+![推送酱](http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvu29ic26tj30v91jltd4.jpg)
+
+![推送酱](http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvu2aifxi9j30v91jldju.jpg)
+
+![推送酱](http://wx3.sinaimg.cn/mw690/0060lm7Tly1fvu2b56v5nj30v91jl4n5.jpg)
+
 ### 需求
 - serverChan的SendKey
 - 一台VPS
@@ -18,8 +27,7 @@
 - 回到通道管理界面，点击通道的“发送消息”按钮，便能看到SendKey
 
 #### 修改config.php
-ok，现在有了SendKey。修改本项目的配置文件config.php，将sendKey项改为你刚刚申请的。将products对应
-的pid改为你希望关注的pid，这个pid是搬瓦工的商品代号，我已经在配置里写了几个，按已有格式来写就好。
+ok，现在有了SendKey。修改本项目的配置文件config.php，将sendKey项改为你刚刚申请的。将products对应的pid改为你希望关注的pid，这个pid是搬瓦工的商品代号，我已经在配置里写了几个，按已有格式来写就好。
 至于每个商品对应的别名，随便取一个都成。最后是aff项，这个其实没多大意义，我做这个初衷只是自己用，
 如果你让很多人关注了上面的通道二维码（通知时所有关注了通道二维码的人都会收到通知消息），
 那么可以配置aff，说不定能一夜暴富……比如，如果你真的什么都不会，也可以直接关注我搭建好的啊（邪恶脸）：
@@ -71,4 +79,4 @@ $ systemctl status crond
 $ crontab -l
 ```
 到这里就配置好了，have fun.
-有任何问题欢迎提[issues](https://github.com/luolongfei/bwg/issues)，有帮到你的话也欢迎给小星星~
+有任何问题欢迎提[issues](https://github.com/luolongfei/bwg/issues)，有帮到你的话也欢迎给star~
