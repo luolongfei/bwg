@@ -6,11 +6,11 @@
 ### 效果
 *每当搬瓦工补货，都能收到微信消息。消息内容包括VPS的基本信息和最新的优惠码。*
 
-![推送酱](http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvu29ic26tj30v91jltd4.jpg)
+![推送酱](https://ws1.sinaimg.cn/large/a4d9cbc6gy1fvu34108idj20v91jltd4.jpg)
 
-![推送酱](http://wx2.sinaimg.cn/mw690/0060lm7Tly1fvu2aifxi9j30v91jldju.jpg)
+![推送酱](https://ws1.sinaimg.cn/large/a4d9cbc6gy1fvu34xnpepj20v91jldju.jpg)
 
-![推送酱](http://wx3.sinaimg.cn/mw690/0060lm7Tly1fvu2b56v5nj30v91jl4n5.jpg)
+![推送酱](https://ws1.sinaimg.cn/large/a4d9cbc6gy1fvu35oyddnj20v91jl4n5.jpg)
 
 ### 需求
 - serverChan的SendKey
@@ -32,7 +32,7 @@ ok，现在有了SendKey。修改本项目的配置文件config.php，将sendKey
 如果你让很多人关注了上面的通道二维码（通知时所有关注了通道二维码的人都会收到通知消息），
 那么可以配置aff，说不定能一夜暴富……比如，如果你真的什么都不会，也可以直接关注我搭建好的啊（邪恶脸）：
 
-![推送酱](http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvu03crbbij303w03zjta.jpg)
+![推送酱](https://ws1.sinaimg.cn/large/a4d9cbc6ly1fvu38k7enhj204e042gnu.jpg)
 
 （微信扫码关注，搬瓦工一补货你就会收到微信通知，
 可随时取消）
