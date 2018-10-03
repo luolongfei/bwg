@@ -142,11 +142,10 @@ class BWG
      * @param string $sendKey
      * @param integer $pid 商品id
      * @param string $pName 商品别名
-     * @param integer $aff aff
      * @return null
      * @throws ErrorException
      */
-    public function notice($sendKey, $pid, $pName, $aff = '')
+    public function notice($sendKey, $pid, $pName)
     {
         if (file_exists(static::$logPath . 'today_notified_pid_' . $pid . '.php')) { // 防止同一天内重复提醒
             return false;
@@ -212,7 +211,7 @@ class BWG
             }
 
             $notice_content = $notice_content ?: '未能匹配VPS的任何信息，也许是搬瓦工的页面布局完全变了，也许是假到货了，主人最好自己去页面看一下：';
-            $notice_content .= "\n[立即前往查看](https://bwh1.net/" . ($aff ? 'aff.php?aff=' . $aff : 'cart.php?a=add') . "&pid=" . $pid . ")\n\n![通讯酱](http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvtvodr7ijj30ia0lkagm.jpg)\n笨笨的机器人敬上";
+            $notice_content .= "\n[立即前往查看](https://bwh1.net/cart.php?a=add&pid=" . $pid . ")\n\n![通讯酱](http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvtvodr7ijj30ia0lkagm.jpg)\n笨笨的机器人敬上";
 
             ServerChan::send($sendKey, sprintf('主人，「%s」有货了，赶快去抢购吧~', $pName), $notice_content);
             system_log(sprintf('在%s这个时刻，「%s」补货了，我通知了所有人，写这条内容是为了防止在同一天内重复提醒~', date('Y-m-d H:i:s'), $pName), 'today_notified_pid_' . $pid, 'NOTICE');
@@ -230,8 +229,7 @@ try {
         BWG::instance()->notice(
             $config['sendKey'],
             $pid,
-            $pName,
-            $config['aff']
+            $pName
         );
 
         usleep(600);
