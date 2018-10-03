@@ -78,4 +78,4 @@ $ systemctl status crond
 $ crontab -l
 ```
 到这里就配置好了，have fun.
-有任何问题欢迎提[issues](https://github.com/luolongfei/bwg/issues)，有帮到你的话也欢迎给star~
+有任何问题欢迎提[issues](https://github.com/luolongfei/bwg/issues)，有帮到你的话给个star如何~
