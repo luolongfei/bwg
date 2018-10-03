@@ -6,11 +6,11 @@
 ### 效果
 *每当搬瓦工补货，都能收到微信消息。消息内容包括VPS的基本信息和最新的优惠码。*
 
-![推送酱](https://ws1.sinaimg.cn/large/a4d9cbc6gy1fvu34108idj20v91jltd4.jpg)
+![推送酱](https://ws1.sinaimg.cn/mw690/a4d9cbc6ly1fvu3f6bqc5j20v91jltd4.jpg)
 
-![推送酱](https://ws1.sinaimg.cn/large/a4d9cbc6gy1fvu34xnpepj20v91jldju.jpg)
+![推送酱](https://ws1.sinaimg.cn/mw690/a4d9cbc6gy1fvu34xnpepj20v91jldju.jpg)
 
-![推送酱](https://ws1.sinaimg.cn/large/a4d9cbc6gy1fvu35oyddnj20v91jl4n5.jpg)
+![推送酱](https://ws1.sinaimg.cn/mw690/a4d9cbc6gy1fvu35oyddnj20v91jl4n5.jpg)
 
 ### 需求
 - serverChan的SendKey
