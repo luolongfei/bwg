@@ -194,7 +194,7 @@ class BWG
                 ServerChan::send(
                     $sendKey['report_errors'],
                     sprintf('小主，「%s」疑似有货了，但正则匹配出了一点小状况', $pName),
-                    sprintf("我取得的不寻常的情况如下：\n%s\n这可能是因为搬瓦工页面改版导致无法正确匹配，可能需要修改正则表达式。不过，更重要的是[前往确定是否补货](https://bwh1.net/" . ($aff ? 'aff.php?aff=' . $aff : 'cart.php?a=add') . "&pid=" . $pid . ")。", $errors)
+                    sprintf("我取得的不寻常的情况如下：\n%s\n这可能是因为搬瓦工页面改版导致无法正确匹配，可能需要修改正则表达式，应该**不是真的补货**。请小主[亲自前往确定是否补货](https://bwh1.net/" . ($aff ? 'aff.php?aff=' . $aff : 'cart.php?a=add') . "&pid=" . $pid . ")。", $errors)
                 );
             }
 
@@ -220,12 +220,10 @@ class BWG
             if ($location[1]) {
                 $notice_content .= sprintf("#### 可选机房为：\n%s\n\n", implode("\n", $location[1]));
             }
-
-            $notice_content = $notice_content ?: '未能匹配VPS的任何信息，也许是搬瓦工的页面布局完全变了，也可能**不是真的补货**，小主最好亲自去页面看一眼：';
             $notice_content .= "\n[立即前往查看](https://bwh1.net/" . ($aff ? 'aff.php?aff=' . $aff : 'cart.php?a=add') . "&pid=" . $pid . ")\n\n![通讯酱](http://wx4.sinaimg.cn/mw690/0060lm7Tly1fvtvodr7ijj30ia0lkagm.jpg)\n笨笨的机器人敬上";
 
-            ServerChan::send($sendKey['public_notice'], sprintf('小主，「%s」' . ($errors ? '疑似' : '') . '补货了，赶快去抢购吧~', $pName), $notice_content);
-            system_log(sprintf('在%s这个时刻，「%s」补货了，我通知了所有人，写这条内容是为了防止在同一天内重复提醒~', date('Y-m-d H:i:s'), $pName), 'today_notified_pid_' . $pid, 'NOTICE');
+            $errors || ServerChan::send($sendKey['public_notice'], sprintf('小主，「%s」补货了，赶快去抢购吧~', $pName), $notice_content);
+            system_log(sprintf('在%s这个时刻，「%s」' . ($errors ? '疑似' : '') . "补货了，我通知了所有人，写这条内容是为了防止在同一天内重复提醒。今次取得的页面信息为：\n%s", date('Y-m-d H:i:s'), $pName, $curl->response), 'today_notified_pid_' . $pid, 'NOTICE');
         }
 
         $curl->close();
