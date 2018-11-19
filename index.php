@@ -177,7 +177,7 @@ class BWG
         }
 
         $errors = '';
-        if ($curl->response && stripos($curl->response, 'Out of Stock') === false) { // 有货了
+        if ($curl->response && stripos($curl->response, 'Out of Stock') === false && stripos($curl->response, 'Critical Error') === false) { // 有货了
             if (!preg_match(self::$baseInfoRegex, $curl->response, $vps_base_info)) {
                 $errors .= "匹配基础信息出错\n";
             }
