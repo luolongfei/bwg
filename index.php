@@ -171,7 +171,21 @@ class BWG
         ]);
 
         if ($curl->error) {
+            if (file_exists(static::$logPath . 'curl_error_code_' . $curl->errorCode . '.php')) { // 同一类型Curl错误一天仅推送一次
+                return false;
+            }
+
             ServerChan::send($sendKey['report_errors'], '小主，Curl 请求页面出错', "详情：\n\n" . $curl->errorCode . ' - ' . $curl->errorMessage);
+            system_log(
+                sprintf(
+                    "在%s这个时刻，Curl请求出错：%s\n写这条内容是为了防止在同一天内重复提醒。今次取得的页面信息为：\n%s",
+                    date('Y-m-d H:i:s'),
+                    $curl->errorMessage,
+                    $curl->response
+                ),
+                'curl_error_code_' . $curl->errorCode,
+                'ERROR'
+            );
 
             return false;
         }
