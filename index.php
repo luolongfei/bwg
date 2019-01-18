@@ -91,7 +91,7 @@ class BWG
     /**
      * @var int curl超时秒数
      */
-    protected static $timeOut = 44;
+    protected static $timeOut = 10;
 
     /**
      * 匹配VPS基础信息
@@ -146,7 +146,7 @@ class BWG
      * @return null
      * @throws ErrorException
      */
-    public function notice($sendKey, $pid, $pName, $aff = '')
+    public function notice($sendKey, $pid, $pName, $maxAttemptsNum, $aff = '')
     {
         if (file_exists(static::$logPath . 'today_notified_pid_' . $pid . '.php')) { // 防止同一天内重复提醒
             return false;
@@ -165,10 +165,25 @@ class BWG
             CURLOPT_COOKIEFILE => '',
             CURLOPT_AUTOREFERER => true
         ]);
-        $curl->get('https://bwh1.net/cart.php', [
-            'a' => 'add',
-            'pid' => $pid,
-        ]);
+
+        $attempts = 0; // 已尝试次数
+        while (true) {
+            $curl->get('https://bwh1.net/cart.php', [
+                'a' => 'add',
+                'pid' => $pid,
+            ]);
+
+            if (!$curl->error || $curl->httpStatusCode === 200 || $attempts >= $maxAttemptsNum) {
+                break;
+            }
+
+            $attempts += 1;
+
+            usleep(1000);
+        }
+        if ($attempts) {
+            system_log(sprintf('此刻由于搬瓦工服务器没有正常响应，我一共尝试了%d次。', $attempts));
+        }
 
         if ($curl->error) {
             if (file_exists(static::$logPath . 'curl_error_code_' . $curl->errorCode . '.php')) { // 同一类型Curl错误一天仅推送一次
@@ -253,6 +268,7 @@ try {
             $config['sendKey'],
             $pid,
             $pName,
+            $config['maxAttemptsNum'],
             $config['aff']
         );
 
