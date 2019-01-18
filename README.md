@@ -65,7 +65,7 @@ $ crontab -e
 # 任务内容如下
 # 此任务的含义是在每分钟执行一次/data/www/bwg.feifei.ooo/路径下的index.php文件
 # 注意将/data/www/bwg.feifei.ooo/替换为你自己index.php所在路径
-* * * * * cd /data/www/bwg.feifei.ooo/; php index.php
+* * * * * cd /data/www/bwg.feifei.ooo/; php index.php >/dev/null 2>&1
 ```
 ##### 重启crond守护进程
 ```bash
